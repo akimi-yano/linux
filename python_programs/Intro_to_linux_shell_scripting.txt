@@ -1,0 +1,195 @@
+Intro to linux shell scripting
+
+1. writing your first shell script
+
+localhost:Desktop aki$ nano day1.sh
+localhost:Desktop aki$ chmod +x day1.sh
+localhost:Desktop aki$ ./day1.sh
+I don't have to be great to start, but I have to start to be great! 
+
+NOTE: if I dont do chmod +x then when I try to excecute it, it shows error "permission denied"
+
+
+valid file names:
+
+day-1.sh
+day-1
+DayOne
+_d1
+
+to see the current permission levels : ls -l (all files in the directory)
+or u can specifiy the file like : ls -l day1.sh
+
+owner - group - other users who are not owner or group member
+in order to run the program, you need both excecute and read permission
+
+chmod +rx day1.sh
+
+2. shell built in commands
+
+to display the content of the file : cat (= concatinate)
+cat day1.sh
+
+#! = Shebang (sharp + bang)
+
+#! + path to the interpreter which is /bin/bash
+
+if you dont specify, it will use current shell which might not be what you want
+
+to excecute : ./[file name = name of the script]
+. = this directory
+ex) cd . = dont go any where cuz its the current directory
+
+pwd = present working directory  - to show where I am at
+
+move to parent directory : cd ..
+
+forward = / is a directory separater 
+
+below are the same:
+/home/jason/day1.sh
+./day1.sh
+
+type echo
+-> echo is a shell built in 
+
+
+type -a echo = show all instances of echo 
+->
+echo is a shell builtin
+echo is /bin/echo
+
+
+important : no space inbetween assignment =
+SKILL="shell scripting"
+
+
+vim day2.sh
+#!/bin/bash
+SKILL="shell scripting"
+echo "I want to be good at ${SKILL}. That's why I practice ${SKILL}."
+
+
+3. variables, comments and capitalizations
+
+variables 
+    - cannot start with numbers
+    - can only start with letters or "_" underscore is OK 
+    - cannot have special symbols like "- @"
+
+valid :
+
+SKILL
+SKILL1
+_SKILL
+skill 
+Skill
+ASKill 
+
+invalid:
+
+3SKILL
+A-SKILL
+E@MAIL    
+
+
+* convention is to use all capital letters for variable names !
+
+variable reasssignment is allowed 
+
+
+you can comment with #
+comment or space do not change the operation of the code 
+
+
+4. writing long and complicated shell script really simple
+
+#!/bin/bash
+
+# This script displays information about the system on which it is executed.
+
+# Tell the user that the script is strarting.
+echo "starting the sysinfo script."
+
+# Display the hostname of the system.
+hostname
+
+# Display the current date and time when this information was collected.
+date
+
+# Display the kernel release followed by the architecture.
+uname -r
+uname -m
+
+# Display the disc usage in a human readable format.
+df - h
+
+# End the script by letting the user know it's done.
+echo "Stopping the sysinfo script"
+
+
+5. making decisions in your script and using built in shell variables
+
+
+
+built in variable :
+
+UID - user ID  
+if its root, its UID is 0
+
+if [[ TESTHERE ]]
+then 
+ DO This
+else
+
+
+NOTE: spacing before and after [[ ]] is important 
+
+root user = its dangerous to be root user because if you get hacked then they get all the permissions 
+
+sudo su - (to become root) 
+
+example
+
+#!/bin/bash
+
+# Determine if the user executing this script is the root user or not.
+
+
+# Display the UID (user ID)
+echo "Your UID is: ${UID}."
+
+# Display if the user is the root user or not
+if [[ "${UID}" -eq 0 ]]
+then 
+ echo "Your are root."
+else
+ echo "You are not root."
+fi
+
+
+to compare numbers:
+
+-ne  (not equal)
+-lt  (less than)
+-gt  (greater than)
+-ge  (greater than or equal)
+
+to compare string:
+==
+
+
+root user == super user - they can do anything !
+sudo = super user do
+
+to run as a root : (they will ask your password)
+
+sudo ./got-root.sh
+
+to switch user = su : (they will ask your password)
+
+su
+
+to logout from root account :
+
+exit

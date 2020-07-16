@@ -1,0 +1,13 @@
+1. Running the program
+This program can be run in the following manner:
+
+$ python program.py < data.bdi
+
+
+2. Testing the program
+The test file can be run with:
+
+$ python3 test.py
+
+The test will load some BDI files that have problems, and make sure that they all cause an error.
+Finally, it will load a correct BDI file, and make sure that the returned data is correct.
