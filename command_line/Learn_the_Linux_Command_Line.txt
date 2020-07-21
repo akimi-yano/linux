@@ -1,0 +1,41 @@
+Learn the Linux Command Line: Basic Commands
+command line = a way to access your computer
+
+other names: 
+command line
+terminal
+shell
+bash shell
+CLI (command line interface)
+Command prompt (cmd)
+
+control alt t 
+calendar
+pwd = print present working directory
+
+clear - to clean the terminal (but you stay at the same directory !)
+
+ls -t (print the files by sorting by which directory/folder was last modified)
+
+ls -l (print and show when each file was modified)
+
+ls -t -r (print the files by sorting by which directory/folder was last modified by flipping it (reversed order))
+
+to create a hidden folder/directory -> just add "." in the beginning of the folder/directory
+
+ls -a (show all the folders even if they are hidden folders like "." folders)
+
+ls -R (recursive - you go through all the directories * careful of where you use it !! if you want to print out all the files in this computer
+        got to home directory and do ls -R *careful)
+
+rmdir - to delete a directory 
+
+cp [file name] [directory name]  - copy a file to a directory
+mv - move a file to a directory
+
+
+bash [file name]
+sh [file name]
+./[file name]
+
+sudo cp helloworld /usr/bin 
